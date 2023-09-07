@@ -277,7 +277,7 @@ origin_m=origin.strip().lower().replace(',',' ').replace('.','').replace('(','')
 destination_m=destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
 import requests
-url = 'https://london-bss-final-zby5e6zv3q-nw.a.run.app/predict'
+url_lorcan = 'https://london-bss-final-zby5e6zv3q-nw.a.run.app/predict'
 
 with stylable_container(
     key="red_button",
@@ -291,7 +291,7 @@ with stylable_container(
 ):
     if st.button("Predict"):
         params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing_2)}
-        response = requests.get(url, params=params)
+        response = requests.get(url_lorcan, params=params)
         st.write(response)
         st.write(origin_m)
         st.write(destination_m)
@@ -410,8 +410,9 @@ with stylable_container(
         closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
         closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
-        params_2 = {'origin_m': 'wenlock_road___hoxton', 'destination_m': closest_destination_m, 'timing': str(timing_2)}
-        response = requests.get(url, params=params_2)
+        params_2 = {'origin_m': 'wenlock_road___hoxton', 'destination_m': "wormwood_street__liverpool_street", 'timing': str(timing_2)}
+        
+        response = requests.get(url_lorcan, params=params_2)
         result=response.json()
         closest_origin_station_result=int(result['origin_station'])
         closest_destination_station_result=int(result['destination_station'])
