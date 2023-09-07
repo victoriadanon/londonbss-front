@@ -205,7 +205,7 @@ with col2:
 ###############################################################################
 #### TIMING
 
-# from datetime import datetime
+# from  import datetime
 
 with stylable_container(
     key="container_with_border",
@@ -396,7 +396,10 @@ with stylable_container(
 
         timing_datetime_day=(datetime.datetime.now()+timing) #timedelta(hours=int(timing.strftime("%H")))).strftime("%Y-%m-%d")
         timing_datetime_full=(datetime.datetime.now()+timing) #timedelta(hours=int(timing.strftime("%H")))).strftime("%Y-%m-%d %H:00")
-
+       
+        st.write(timing_datetime_day)
+        st.write(timing_datetime_full)
+   
 
         for day in weather_2['forecast']['forecastday']:
             if day['date']==timing_datetime_day:
