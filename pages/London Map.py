@@ -62,8 +62,8 @@ with stylable_container(
         elif option=='>50':
             st.map(data=stations_df_st[stations_df_st['s_num_docks']>50],latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
     
-        if st.button("Reload"):
-            None
+    if st.button("Reload"):
+        None
 
 
 # st.map(data=stations_df_st,latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
