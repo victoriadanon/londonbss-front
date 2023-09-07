@@ -286,10 +286,10 @@ with stylable_container(
         """,
 ):
     if st.button("Predict"):
-       import requests
-       url = ''
-       params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
-       response = requests.get(url, params=params)
+        import requests
+        url = ''
+        params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
+        response = requests.get(url, params=params)
        
 
 ## ITINERARY JOURNEY
