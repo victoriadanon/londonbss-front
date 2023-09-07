@@ -397,6 +397,7 @@ with stylable_container(
         timing_datetime_day=(datetime.datetime.now()+timing) #timedelta(hours=int(timing.strftime("%H")))).strftime("%Y-%m-%d")
         timing_datetime_full=(datetime.datetime.now()+timing) #timedelta(hours=int(timing.strftime("%H")))).strftime("%Y-%m-%d %H:00")
        
+        st.write(timing) 
         st.write(timing_datetime_day)
         st.write(timing_datetime_full)
    
