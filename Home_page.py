@@ -290,6 +290,10 @@ with stylable_container(
     if st.button("Predict"):
         params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
         response = requests.get(url, params=params)
+        st.write(response)
+        st.write(origin_m)
+        st.write(destination_m)
+        st.write(timing)
         result=response.json()
         origin_station_result=int(result['origin_station'])
         destination_station_result=int(result['destination_station'])
