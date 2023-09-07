@@ -21,10 +21,6 @@ from londonbssfront.distance import dist,find_nearest
 
 #####
 
-import darts
-from darts.models import AutoARIMA
-from darts import TimeSeries
-
 ###############################################################################
 ###### THEMING
 
