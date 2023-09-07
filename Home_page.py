@@ -274,6 +274,8 @@ for station in stations:
 origin_m=origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 destination_m=destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
+import requests
+url = 'https://london-bss-final-zby5e6zv3q-nw.a.run.app'
 
 with stylable_container(
     key="red_button",
@@ -286,8 +288,6 @@ with stylable_container(
         """,
 ):
     if st.button("Predict"):
-        import requests
-        url = ''
         params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
         response = requests.get(url, params=params)
         result=response.json()
@@ -401,6 +401,19 @@ with stylable_container(
                     if add_property['key'] == 'NbEmptyDocks':
                         nb_empty_docks_closest_destination=add_property['value']
 
+       closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
+       closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
+
+       params_2 = {'origin_m': closest_origin_m, 'destination_m': closest_destination_m, 'timing': str(timing)}
+       response = requests.get(url, params=params_2)
+       result=response.json()
+       closest_origin_station_result=int(result['origin_station'])
+       closest_destination_station_result=int(result['destination_station'])
+
+       closest_origin_station_nb_bikes=max(int(nb_bikes_closest_origin)+origin_station_result,0)
+       closest_destination_station_empty_docks=max(int(nb_empty_docks_closest_destination)-destination_station_result,0)
+
+
 ###############################################################################
 # IN THE STREAMLIT
         with stylable_container(
@@ -442,7 +455,7 @@ with stylable_container(
                 }
                 """,
         ):
-                        st.metric(label="AVAILABLE BIKES", value=nb_bikes)
+                        st.metric(label="AVAILABLE BIKES", value= origin_station_nb_bikes)
 
             with col2:
                 with stylable_container(
@@ -467,7 +480,7 @@ with stylable_container(
                 }
                 """,
         ):
-                        st.metric(label="EMPTY DOCKS", value=nb_empty_docks)
+                        st.metric(label="EMPTY DOCKS", value=destination_station_empty_docks)
 
 
 
@@ -702,7 +715,7 @@ with stylable_container(
         ):
                         st.markdown(f"<h5 style='text-align: center; color:#6d6d6d ;'>ORIGIN</h5>", unsafe_allow_html=True)
                         st.markdown(f"<h4 style='text-align: center; color: #333333 ;'>{closest_origin}</h4>", unsafe_allow_html=True)
-                        st.metric(label="AVAILABLE BIKES", value=nb_bikes_closest_origin)
+                        st.metric(label="AVAILABLE BIKES", value=closest_origin_station_nb_bikes)
 
             with col2:
                 with stylable_container(
@@ -727,7 +740,7 @@ with stylable_container(
                 ):
                         st.markdown(f"<h5 style='text-align: center; color:#6d6d6d ;'>DESTINATION</h5>", unsafe_allow_html=True)
                         st.markdown(f"<h4 style='text-align: center; color: #333333 ;'>{closest_destination}</h4>", unsafe_allow_html=True)
-                        st.metric(label="EMPTY DOCKS", value=nb_empty_docks_closest_destination)
+                        st.metric(label="EMPTY DOCKS", value=closest_destination_station_empty_docks)
 
         col1, col2, col3, col4,col5,col6,col7,col8,col9= st.columns(9)
         with col9:
