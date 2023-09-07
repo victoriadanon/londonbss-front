@@ -290,6 +290,7 @@ with stylable_container(
        url = ''
        params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
        response = requests.get(url, params=params)
+       
 
 ## ITINERARY JOURNEY
 
