@@ -275,7 +275,7 @@ origin_m=origin.strip().lower().replace(',',' ').replace('.','').replace('(','')
 destination_m=destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
 import requests
-url = 'https://london-bss-final-zby5e6zv3q-nw.a.run.app'
+url = 'https://london-bss-final-zby5e6zv3q-nw.a.run.app/predict'
 
 with stylable_container(
     key="red_button",
