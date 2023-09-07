@@ -401,17 +401,17 @@ with stylable_container(
                     if add_property['key'] == 'NbEmptyDocks':
                         nb_empty_docks_closest_destination=add_property['value']
 
-       closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
-       closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
+        closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
+        closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
-       params_2 = {'origin_m': closest_origin_m, 'destination_m': closest_destination_m, 'timing': str(timing)}
-       response = requests.get(url, params=params_2)
-       result=response.json()
-       closest_origin_station_result=int(result['origin_station'])
-       closest_destination_station_result=int(result['destination_station'])
+        params_2 = {'origin_m': closest_origin_m, 'destination_m': closest_destination_m, 'timing': str(timing)}
+        response = requests.get(url, params=params_2)
+        result=response.json()
+        closest_origin_station_result=int(result['origin_station'])
+        closest_destination_station_result=int(result['destination_station'])
 
-       closest_origin_station_nb_bikes=max(int(nb_bikes_closest_origin)+origin_station_result,0)
-       closest_destination_station_empty_docks=max(int(nb_empty_docks_closest_destination)-destination_station_result,0)
+        closest_origin_station_nb_bikes=max(int(nb_bikes_closest_origin)+origin_station_result,0)
+        closest_destination_station_empty_docks=max(int(nb_empty_docks_closest_destination)-destination_station_result,0)
 
 
 ###############################################################################
