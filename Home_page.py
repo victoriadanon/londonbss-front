@@ -290,6 +290,12 @@ with stylable_container(
         url = ''
         params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
         response = requests.get(url, params=params)
+        result=response.json()
+        origin_station_result=int(result['origin_station'])
+        destination_station_result=int(result['destination_station'])
+
+        origin_station_nb_bikes=max(int(nb_bikes)+origin_station_result,0)
+        destination_station_empty_docks=max(int(nb_empty_docks)-destination_station_result,0)
        
 
 ## ITINERARY JOURNEY
