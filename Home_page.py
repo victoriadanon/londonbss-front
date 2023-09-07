@@ -410,7 +410,7 @@ with stylable_container(
         closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
         closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
-        params_2 = {'origin_m': closest_origin_m, 'destination_m': closest_destination_m, 'timing': str(timing_2)}
+        params_2 = {'origin_m': 'wenlock_road___hoxton', 'destination_m': closest_destination_m, 'timing': str(timing_2)}
         response = requests.get(url, params=params_2)
         result=response.json()
         closest_origin_station_result=int(result['origin_station'])
