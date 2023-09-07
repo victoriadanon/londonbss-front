@@ -227,8 +227,11 @@ with stylable_container(
         """,
 ):
 
-            departure_time=st.time_input('Select how many hours from now',time(1, 00),step=3600)
-            timing=departure_time
+         
+         departure_time=st.time_input('(IN HOURS)',time(1, 00),step=3600)
+         now=datetime.datetime.now().time()
+         timing=datetime.datetime.combine(datetime.date.today(), departure_time)-datetime.datetime.combine(datetime.date.today(), now)
+         timing_2=int(str(departure_time)[:1])
 
 ###############################################################################
 ### CODE FOR PREDICTION
@@ -287,12 +290,12 @@ with stylable_container(
         """,
 ):
     if st.button("Predict"):
-        params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing)}
+        params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing_2)}
         response = requests.get(url, params=params)
         st.write(response)
         st.write(origin_m)
         st.write(destination_m)
-        st.write(timing)
+        st.write(timing_2)
         result=response.json()
         origin_station_result=int(result['origin_station'])
         destination_station_result=int(result['destination_station'])
@@ -407,7 +410,7 @@ with stylable_container(
         closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
         closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
-        params_2 = {'origin_m': closest_origin_m, 'destination_m': closest_destination_m, 'timing': str(timing)}
+        params_2 = {'origin_m': closest_origin_m, 'destination_m': closest_destination_m, 'timing': str(timing_2)}
         response = requests.get(url, params=params_2)
         result=response.json()
         closest_origin_station_result=int(result['origin_station'])
