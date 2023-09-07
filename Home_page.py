@@ -231,7 +231,7 @@ with stylable_container(
          departure_time=st.time_input('(IN HOURS)',time(1, 00),step=3600)
          now=datetime.datetime.now().time()
          timing=datetime.datetime.combine(datetime.date.today(), departure_time)-datetime.datetime.combine(datetime.date.today(), now)
-         timing_2=int(str(departure_time)[:1])
+         timing_2=int(str(departure_time)[:2])
 
 ###############################################################################
 ### CODE FOR PREDICTION
