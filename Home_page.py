@@ -392,10 +392,6 @@ with stylable_container(
 
         timing_datetime_day=str((datetime.datetime.now()+timing))[:10] 
         timing_datetime_full=str((datetime.datetime.now()+timing))[:13]+":00" 
-        st.write('TEST')
-        st.write(timing) 
-        st.write(timing_datetime_day)
-        st.write(timing_datetime_full)
    
 
         for day in weather_2['forecast']['forecastday']:
@@ -404,6 +400,7 @@ with stylable_container(
                     if hour['time']==timing_datetime_full:
                         temperature=hour['temp_c']
                         condition=hour['condition']['text']
+                        icon=hour['condition']['icon']
                         prob_rain=hour['chance_of_rain']
 
 
@@ -614,6 +611,8 @@ with stylable_container(
             with col5:
                 st.markdown("<h3 style='text-align: center; color: #6d6d6d ;'>Weather  </h3>", unsafe_allow_html=True)
 
+            with col6:
+                st.image('https:'+icon,width=50)
 
 
 
