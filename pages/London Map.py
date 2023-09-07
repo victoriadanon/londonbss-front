@@ -37,4 +37,18 @@ stations_df_st=pd.read_csv('londonbssfront/stations_csv/stations_df_st.csv')
 #         ):
 st.markdown("<h2 style='text-align: center; color:#6d6d6d ;'>LONDON MAP</h2>", unsafe_allow_html=True)
 
-st.map(data=stations_df_st,latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
+option = st.selectbox('Show me stations with number of docks above?', ('>30', '>40', '>50','all'))
+
+if option=='all':
+    st.map(data=stations_df_st,latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
+
+elif option=='>30':
+    st.map(data=stations_df_st[stations_df_st['s_num_docks']>30],latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
+
+elif option=='>40':
+    st.map(data=stations_df_st[stations_df_st['s_num_docks']>40],latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
+
+elif option=='>50':
+    st.map(data=stations_df_st[stations_df_st['s_num_docks']>50],latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
+
+# st.map(data=stations_df_st,latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
