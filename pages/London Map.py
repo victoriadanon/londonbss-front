@@ -37,7 +37,8 @@ stations_df_st=pd.read_csv('londonbssfront/stations_csv/stations_df_st.csv')
 #         ):
 st.markdown("<h2 style='text-align: center; color:#6d6d6d ;'>LONDON MAP</h2>", unsafe_allow_html=True)
 
-option = st.selectbox('Show me stations with number of docks above?', ('>30', '>40', '>50','all'))
+st.markdown("<h5 style='text-align: center; color: #c2c2c2 ;'>Show me stations with number of docks above</h5>", unsafe_allow_html=True)
+option = st.selectbox('', ('>30', '>40', '>50','all'))
 with stylable_container(
     key="red_button",
     css_styles="""
