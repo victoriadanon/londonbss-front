@@ -292,10 +292,6 @@ with stylable_container(
     if st.button("Predict"):
         params = {'origin_m': origin_m, 'destination_m': destination_m, 'timing': str(timing_2)}
         response = requests.get(url_lorcan, params=params)
-        st.write(response)
-        st.write(origin_m)
-        st.write(destination_m)
-        st.write(timing_2)
         result=response.json()
         origin_station_result=int(result['origin_station'])
         destination_station_result=int(result['destination_station'])
@@ -410,7 +406,7 @@ with stylable_container(
         closest_origin_m=closest_origin.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
         closest_destination_m=closest_destination.strip().lower().replace(',',' ').replace('.','').replace('(','').replace(')','').replace('&','').replace(' ','_').replace("'","")
 
-        params_2 = {'origin_m': 'wenlock_road___hoxton', 'destination_m': "wormwood_street__liverpool_street", 'timing': str(timing_2)}
+        params_2 = {'origin_m': 'wenlock_road___hoxton', 'destination_m': destination_m, 'timing': str(timing_2)}
         
         response = requests.get(url_lorcan, params=params_2)
         result=response.json()
