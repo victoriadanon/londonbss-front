@@ -597,7 +597,7 @@ with stylable_container(
 
             col1, col2,col3,col4,col5,col6,col7,col8,col9= st.columns(9)
             with col5:
-                st.markdown("<h3 style='text-align: center; color: #6d6d6d ;'>Weather     </h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: #6d6d6d ;'>Weather         </h3>", unsafe_allow_html=True)
 
             with col6:
                 st.image('https:'+icon,width=50)
