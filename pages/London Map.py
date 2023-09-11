@@ -49,7 +49,7 @@ with stylable_container(
         }
         """,
 ):
-    if st.button("Predict"):
+    if st.button("Display"):
 
         if option=='all':
             st.map(data=stations_df_st,latitude='s_lat',longitude='s_lon',color='#ff000080',zoom=11,size='Size_bucket',use_container_width=True)
